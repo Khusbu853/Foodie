@@ -13,7 +13,7 @@ const Restaurants = () => {
 
   const getFilterRestaurants = (searchText) => {
     const data = allRestaurant?.filter((res) =>
-      res.data.name.toLowerCase().includes(searchText.toLowerCase())
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     console.log(data);
     setRestaurants(data);
@@ -22,9 +22,29 @@ const Restaurants = () => {
   const getRestaurants = async () => {
     const data = await fetch(RESTAURANTS_URL);
     const resturantsData = await data.json();
-    setSorts(resturantsData?.data?.sorts);
-    setRestaurants(resturantsData?.data?.cards[2]?.data?.data.cards);
-    setAllRestaurant(resturantsData?.data?.cards[2]?.data?.data.cards);
+    // setRestaurants(resturantsData?.data?.cards[2]?.data?.data.cards);
+    // setAllRestaurant(resturantsData?.data?.cards[2]?.data?.data.cards);
+    setRestaurants(
+      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        resturantsData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        resturantsData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        resturantsData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+    );
+
+    setAllRestaurant(
+      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        .restaurants ||
+        resturantsData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        resturantsData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants ||
+        resturantsData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+    );
   };
 
   useEffect(() => {
@@ -48,8 +68,8 @@ const Restaurants = () => {
         <div className="restaurant-container">
           {restaurants?.map((item) => {
             return (
-              <Link to={"/restaurants/" + item.data.id} key={item.data.id}>
-                <RestaurantItem {...item.data} />
+              <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
+                <RestaurantItem {...item.info} />
               </Link>
             );
           })}
@@ -58,6 +78,7 @@ const Restaurants = () => {
     </>
   ) : (
     <Shimmer />
+    
   );
 };
 

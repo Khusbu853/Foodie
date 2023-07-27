@@ -8,6 +8,7 @@ const SearchRestaurantOrFood = ({ getFilterRestaurants }) => {
       getFilterRestaurants(searchText);
     }
   };
+  
 
   return (
     <div className="search-container">
