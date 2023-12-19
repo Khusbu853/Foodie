@@ -1,8 +1,9 @@
 
 export const RESTAURANTS_URL =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.2893144&lng=80.4604643&is-seo-homepage-enabled=true";
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.7049873&lng=74.24325270000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+  
 
-export const RESTAURANT_OFFER_URL = "https://www.swiggy.com/dapi/offers/restaurant?lat=22.73651&lng=75.889219&offset=0"
+export const RESTAURANT_OFFER_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.7049873&lng=74.24325270000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
 export const RESTAURANTS_IMG_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";

@@ -25,25 +25,11 @@ const Restaurants = () => {
     // setRestaurants(resturantsData?.data?.cards[2]?.data?.data.cards);
     // setAllRestaurant(resturantsData?.data?.cards[2]?.data?.data.cards);
     setRestaurants(
-      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        .restaurants ||
-        resturantsData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants ||
-        resturantsData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants ||
-        resturantsData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants
+      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
     setAllRestaurant(
-      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        .restaurants ||
-        resturantsData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants ||
-        resturantsData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants ||
-        resturantsData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants
+      resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -68,8 +54,8 @@ const Restaurants = () => {
         <div className="restaurant-container">
           {restaurants?.map((item) => {
             return (
-              <Link to={"/restaurants/" + item.info.id} key={item.info.id}>
-                <RestaurantItem {...item.info} />
+              <Link to={"/restaurants/" + item.info.id} key={item.info?.id}>
+                <RestaurantItem {...item?.info} />
               </Link>
             );
           })}

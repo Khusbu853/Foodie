@@ -17,7 +17,7 @@ const Offer = () => {
     const getOfferRestaurants = async () => {
         const data = await fetch(RESTAURANT_OFFER_URL);
         const json = await data.json();
-        setRestaurants(json?.data?.cards);
+        setRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log(restaurants)
     };
     return (
@@ -36,11 +36,11 @@ const Offer = () => {
                 <div className="offer-container">
                     {restaurants?.map((item) => {
                         return (
-                            item.cardType === "restaurant" && (
-                                <Link to={"/restaurants/" + item?.data?.data?.id} key={item?.data?.data?.id}>
-                                    <RestaurantItem {...item?.data?.data} />
+                            
+                                <Link to={"/restaurants/" + item?.info?.id} key={item?.info?.id}>
+                                    <RestaurantItem {...item?.info} />
                                 </Link>
-                            )
+                            
                         );
                     })}
                 </div>
