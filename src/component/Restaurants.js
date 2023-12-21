@@ -7,31 +7,36 @@ import { useState, useEffect } from "react";
 import { RESTAURANTS_URL } from "../config";
 
 const Restaurants = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  // const restaurants1 = reslist[0].info.cards[2].card.card.gridElements?.infoWithStyle?.restaurants
+  const [restaurants, setRestaurants] = useState('');
   const [sorts, setSorts] = useState([]);
-  const [allRestaurant, setAllRestaurant] = useState([]);
+  const [allRestaurant, setAllRestaurant] = useState('');
 
   const getFilterRestaurants = (searchText) => {
     const data = allRestaurant?.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log(data);
+    // console.log(data);
     setRestaurants(data);
   };
 
   const getRestaurants = async () => {
     const data = await fetch(RESTAURANTS_URL);
     const resturantsData = await data.json();
-    // setRestaurants(resturantsData?.data?.cards[2]?.data?.data.cards);
-    // setAllRestaurant(resturantsData?.data?.cards[2]?.data?.data.cards);
     setRestaurants(
       resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    console.log(data)
 
     setAllRestaurant(
       resturantsData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  // const getRestaurants = async () => {
+  //   const data = await reslist
+  //   setRestaurants(reslist[0].info.cards[2].card.card.gridElements?.infoWithStyle?.restaurants)
+  //   setAllRestaurant(reslist[0].info.cards[2].card.card.gridElements?.infoWithStyle?.restaurants)
+  // }
 
   useEffect(() => {
     getRestaurants();

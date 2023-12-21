@@ -9,7 +9,7 @@ import offerLogo from "../assets/img/offerlogo.webp";
 import { RESTAURANT_OFFER_URL } from "../config";
 
 const Offer = () => {
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState('');
     useEffect(() => {
         getOfferRestaurants();
     }, []);
